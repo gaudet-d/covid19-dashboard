@@ -12,6 +12,7 @@ The following code can be run in your R console to install the required R packag
 ```
 install.packages(c("shiny", "magrittr", "dplyr", "ggplot2"))
 ```
+Note that RStudio will be required in order to use the ```shiny``` package. 
 
 ### Installing
 
