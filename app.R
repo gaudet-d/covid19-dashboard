@@ -12,15 +12,17 @@ ui = fluidPage(
   p(paste("Data last updated:", max(mydat$date), sep=" ")),
   paste("Select a country to see the daily COVID-19 case counts, hospitalizations, and vaccination data. Note that fully vaccinated refers to two doses of an approved vaccine - however the definition of fully vaccinated may differ per country. This data is collected from"),
   tags$em("Our World in Data.", inline=T),
-  uiOutput("src", inline=T), tags$br(),
+  uiOutput("src", inline=T),
+  tags$br(),
   selectizeInput("countryID", label=NULL, choices = country.name, options = list(maxItems=1, maxOptions=5, placeholder="Select a country name.")),
   tableOutput("pop"),
   plotOutput("casesPlot"),
   fluidRow(
     splitLayout(cellWidths=c("50%","50%"), plotOutput("hospPlot"), plotOutput("vxPlot"))
   ),
-  p("Note that some countries may not have all features of the data - therefore some plots may appear empty.", inline=T)
+  strong("Note:"), paste("Some countries may not have all features of the data - therefore some plots may appear empty.")
 )
+
 
 server = function(input, output){
   #Reactive filtering of dataset when the selected country is changed.
